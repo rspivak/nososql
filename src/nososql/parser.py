@@ -24,7 +24,7 @@
 
 __author__ = 'Ruslan Spivak <ruslan.spivak@gmail.com>'
 
-from sonosql import tokens
+from nososql import tokens
 
 
 class ParserException(Exception):

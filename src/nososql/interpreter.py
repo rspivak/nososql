@@ -24,6 +24,12 @@
 
 __author__ = 'Ruslan Spivak <ruslan.spivak@gmail.com>'
 
+import sys
+
+from nososql.lexer import Lexer
+from nososql.parser import Parser
+
+
 # program -> stat+
 # stat -> table | insert | assign | query | print
 #
@@ -133,3 +139,19 @@ class Interpreter(object):
                 print
         else:
             print result
+
+
+def main():
+    if len(sys.argv) < 2:
+        print 'usage: nososql [input file]'
+        sys.exit()
+
+    text = open(sys.argv[1]).read()
+
+    lookahead_limit = 2
+    interp = Interpreter()
+    parser = Parser(Lexer(text), lookahead_limit, interp)
+    parser.parse()
+
+
+

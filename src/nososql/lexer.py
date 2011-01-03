@@ -26,7 +26,7 @@ __author__ = 'Ruslan Spivak <ruslan.spivak@gmail.com>'
 
 import re
 
-from sonosql import tokens
+from nososql import tokens
 
 
 class Token(object):

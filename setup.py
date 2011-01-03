@@ -19,9 +19,9 @@ For simplicity reasons database is created and manipulated in memory.
 """
 
 setup(
-    name='sonosql',
+    name='nososql',
     version='0.1',
-    url='http://github.com/rspivak/sonosql',
+    url='http://github.com/rspivak/nososql',
     license='MIT',
     description='Syntax-Directed Interpreter for an SQL subset',
     author='Ruslan Spivak',
@@ -32,7 +32,7 @@ setup(
     zip_safe=False,
     entry_points="""\
     [console_scripts]
-    sonosql = sonosql.interpreter:main
+    nososql = nososql.interpreter:main
     """,
     classifiers=filter(None, classifiers.split('\n')),
     long_description=long_description

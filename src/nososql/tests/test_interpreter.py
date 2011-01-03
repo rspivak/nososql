@@ -30,9 +30,9 @@ import unittest
 class InterpreterTestCase(unittest.TestCase):
 
     def _parse(self, text, interpreter=None):
-        from sonosql.interpreter import Interpreter
-        from sonosql.lexer import Lexer
-        from sonosql.parser import Parser
+        from nososql.interpreter import Interpreter
+        from nososql.lexer import Lexer
+        from nososql.parser import Parser
 
         lookahead_limit = 2
 
@@ -41,7 +41,7 @@ class InterpreterTestCase(unittest.TestCase):
         return parser.parse()
 
     def test_create_table(self):
-        from sonosql.interpreter import Interpreter
+        from nososql.interpreter import Interpreter
         interp = Interpreter()
         self._parse('create table test (primary key name, age);', interp)
 
@@ -87,7 +87,7 @@ class InterpreterTestCase(unittest.TestCase):
         self.assertEquals(result[0][1], 200)
 
     def test_assign(self):
-        from sonosql.interpreter import Interpreter
+        from nososql.interpreter import Interpreter
         interp = Interpreter()
         self._parse(
             """
