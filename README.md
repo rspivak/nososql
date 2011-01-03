@@ -60,7 +60,7 @@ High-level overview of the interpreter:
                  \|/
           +----------------+
           |LL(k) Recursive |
-          | descent Parser |
+          | descent parser |
           | with embedded  |
           | actions        |
           +-------+--------+
