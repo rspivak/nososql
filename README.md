@@ -26,34 +26,6 @@ Using `buildout`
 Technical details
 -----------------
 
-SQL grammar:
-
-    program -> stat+
-    stat -> table | insert | assign | query | print
-
-    print -> 'print' expr ';'
-    table -> 'create' 'table' ID '(' 'primary' 'key' ID (',' ID)+ ')' ';'
-    insert -> 'insert' 'into' ID 'set' ID '=' expr ' (',' ID '=' expr)* ';'
-    assign -> ID '=' expr ';'
-    query -> 'select' ID (',' ID)* 'from' ID ('where' ID '=' expr)? ';'
-    expr -> ID | STRING | INT | query
-
-    COMMENT -> #
-
-
-Sample file test.nososql:
-
-    create table test (primary key name, age);
-    insert into test set name='John', passwd='xxx', quota=100;
-    insert into test set name='Jim', passwd='yyy', quota=200;
-    insert into test set name='Test', passwd='test', quota=30;
-    result = select passwd, quota from test where name='Jim';
-    print result;
-
-    $ bin/nososql test.nososql
-    yyy 200
-
-
 The interpreter is based on a Syntax-Directed Interpreter from
 'Language Implementation Patterns' Ch.9
 
@@ -97,10 +69,38 @@ High-level overview of the interpreter:
                  \|/
                Output
 
+SQL grammar:
+
+    program -> stat+
+    stat -> table | insert | assign | query | print
+
+    print -> 'print' expr ';'
+    table -> 'create' 'table' ID '(' 'primary' 'key' ID (',' ID)+ ')' ';'
+    insert -> 'insert' 'into' ID 'set' ID '=' expr ' (',' ID '=' expr)* ';'
+    assign -> ID '=' expr ';'
+    query -> 'select' ID (',' ID)* 'from' ID ('where' ID '=' expr)? ';'
+    expr -> ID | STRING | INT | query
+
+    COMMENT -> #
+
+
+Sample file test.nososql:
+
+    create table test (primary key name, age);
+    insert into test set name='John', passwd='xxx', quota=100;
+    insert into test set name='Jim', passwd='yyy', quota=200;
+    insert into test set name='Test', passwd='test', quota=30;
+    result = select passwd, quota from test where name='Jim';
+    print result;
+
+    $ bin/nososql test.nososql
+    yyy 200
+
 
 The goal of the project is self-education and to serve as a potential
 example for people interested in crafting their own interpreter for
 simple DSLs.
+
 
 Development
 -----------
@@ -127,3 +127,4 @@ Run tests, test coverage and produce coverage reports::
 Run pep8 and pylint to check code style and search for potential bugs:
 
     $ bin/pep8
+    $ bin/pylint
