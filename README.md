@@ -86,7 +86,7 @@ SQL grammar:
 
 Sample file test.nososql:
 
-    create table test (primary key name, age);
+    create table test (primary key name, passwd, quota);
     insert into test set name='John', passwd='xxx', quota=100;
     insert into test set name='Jim', passwd='yyy', quota=200;
     insert into test set name='Test', passwd='test', quota=30;
