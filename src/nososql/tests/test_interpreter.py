@@ -86,6 +86,18 @@ class InterpreterTestCase(unittest.TestCase):
         self.assertEquals(result[0][0], 'yyy')
         self.assertEquals(result[0][1], 200)
 
+    def test_select_where_clause_no_primary(self):
+        result = self._parse(
+            """
+            create table test (primary key name, age);
+            insert into test set name='John', passwd='xxx', quota=100;
+            insert into test set name='Jim', passwd='yyy', quota=100;
+            insert into test set name='Test', passwd='test', quota=30;
+            select passwd, quota from test where quota=100;
+            """)
+
+        self.assertEquals(len(result), 2)
+
     def test_assign(self):
         from nososql.interpreter import Interpreter
         interp = Interpreter()

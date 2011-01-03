@@ -47,7 +47,7 @@ class Row(object):
         # columns: [(name, val), ...]
         self.columns = columns
 
-    def _get_column_val(self, name):
+    def get_column_val(self, name):
         for col_name, col_val in self.columns:
             if col_name == name:
                 return col_val
@@ -55,7 +55,7 @@ class Row(object):
     def get_columns(self, column_names):
         result = []
         for name in column_names:
-            val = self._get_column_val(name)
+            val = self.get_column_val(name)
             result.append(val)
 
         return result
@@ -120,8 +120,13 @@ class Interpreter(object):
         # no primary key
         result = []
         for row in table.rows.values():
-            result_row = row.get_columns(columns)
-            result.append(result_row)
+            if where_column is not None:
+                if row.get_column_val(where_column) == where_val:
+                    result_row = row.get_columns(columns)
+                    result.append(result_row)
+            else:
+                result_row = row.get_columns(columns)
+                result.append(result_row)
 
         return result
 
