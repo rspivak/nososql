@@ -30,7 +30,7 @@ The main differences are:
 
 3. It's written in Python :)
 
-4. # can be used to comment out lines
+4. The hash symbol can be used to comment out lines
 
 The goal of the project is self-education and to serve as a potential
 example for people interested in crafting their own interpreter for
