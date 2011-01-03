@@ -52,7 +52,7 @@ class InterpreterTestCase(unittest.TestCase):
     def test_select_one_row(self):
         result = self._parse(
             """
-            create table test (primary key name, age);
+            create table test (primary key name, passwd, quota);
             insert into test set name='John', passwd='xxx', quota=100;
             select name, quota, passwd from test;
             """)
@@ -65,7 +65,7 @@ class InterpreterTestCase(unittest.TestCase):
     def test_select_multiple_rows(self):
         result = self._parse(
             """
-            create table test (primary key name, age);
+            create table test (primary key name, passwd, quota);
             insert into test set name='John', passwd='xxx', quota=100;
             insert into test set name='Jim', passwd='yyy', quota=200;
             select name, quota, passwd from test;
@@ -76,7 +76,7 @@ class InterpreterTestCase(unittest.TestCase):
     def test_select_where_clause(self):
         result = self._parse(
             """
-            create table test (primary key name, age);
+            create table test (primary key name, passwd, quota);
             insert into test set name='John', passwd='xxx', quota=100;
             insert into test set name='Jim', passwd='yyy', quota=200;
             insert into test set name='Test', passwd='test', quota=30;
@@ -89,7 +89,7 @@ class InterpreterTestCase(unittest.TestCase):
     def test_select_where_clause_no_primary(self):
         result = self._parse(
             """
-            create table test (primary key name, age);
+            create table test (primary key name, passwd, quota);
             insert into test set name='John', passwd='xxx', quota=100;
             insert into test set name='Jim', passwd='yyy', quota=100;
             insert into test set name='Test', passwd='test', quota=30;
@@ -103,7 +103,7 @@ class InterpreterTestCase(unittest.TestCase):
         interp = Interpreter()
         self._parse(
             """
-            create table test (primary key name, age);
+            create table test (primary key name, passwd, quota);
             insert into test set name='John', passwd='xxx', quota=100;
             result = select name from test;
             """, interp)
@@ -128,7 +128,7 @@ class InterpreterTestCase(unittest.TestCase):
         with redirect_output() as out:
             self._parse(
                 """
-                create table test (primary key name, age);
+                create table test (primary key name, passwd, quota);
                 insert into test set name='John', passwd='xxx', quota=100;
                 result = select name from test;
                 print result;
@@ -139,7 +139,7 @@ class InterpreterTestCase(unittest.TestCase):
     def test_comment(self):
         result = self._parse(
             """
-            create table test (primary key name, age);
+            create table test (primary key name, passwd, quota);
             insert into test set name='John', passwd='xxx', quota=100;
             #insert into test set name='Jim', passwd='yyy', quota=200;
             select name from test;
