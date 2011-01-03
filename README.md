@@ -33,7 +33,7 @@ The main differences are:
 
 1. Lexer is hand-crafted
 
-2. LL(2) Parser is hand-crafted
+2. LL(2) recursive-descent parser is hand-crafted
 
 3. It's written in Python :)
 
